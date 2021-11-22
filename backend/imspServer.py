@@ -15,7 +15,12 @@ class IMSPRequestHandler(socketserver.BaseRequestHandler):
         # Echo the back to the client
         data = self.request.recv(1024)
         print(data.decode())
-        self.request.send(data)
+        data = data.decode()
+        line1 = data[0:data.find('\n')]
+        print('firstLine:'+line1)
+        if(line1 == 'CHECK'):
+            data = '200'
+        self.request.send(str.encode(data))
         return
 
     def finish(self):
@@ -63,7 +68,7 @@ class IMSPServer(socketserver.TCPServer):
         print('closed request')
         return socketserver.TCPServer.close_request(self, request_address)
 
-address = ('localhost',3000)
+address = ('localhost',10000)
 server = IMSPServer(address,IMSPRequestHandler)
 ip, port = server.server_address
 print('ip'+ip)
