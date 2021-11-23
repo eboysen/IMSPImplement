@@ -15,7 +15,8 @@ def checkConnection():
         s.send(str.encode('CHECK\n'+serverHostName))
         resp = s.recv(2000)
         resp = resp.decode()
-        if(resp == '200'):
+        resp = resp.split('\n')
+        if(resp[1] == '200'):
             print('Server OK')
             return serverHostName
         else:
