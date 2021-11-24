@@ -264,10 +264,14 @@ def handleDelete(item):
     try:
         contents = readFromFile()
         x = 0
+        NotFound = True
         while x< len(contents):
             if contents[x][0]==item:
                 contents.pop(x)
+                NotFound=False
             x+=1
+        if(NotFound):
+            return "400"
         file = open(PATH, 'w+')
         for it in contents:
             file.write(it[0]+ " "+ it[1]+" "+it[2]+"\n")

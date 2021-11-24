@@ -231,7 +231,6 @@ while mainLoop:
         else:
             print("code broke")
         #close the connection since IMSP is a stateless/ non-persistant protocol
-        print(lines[1])
         s.close()
 print()
 print('Thank you for managing the system')
