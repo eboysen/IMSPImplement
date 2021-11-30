@@ -218,7 +218,7 @@ while mainLoop:
         if(lines[1]=='200'):
             while x < len(lines):
                 print(lines[x])
-                app += lines[x]
+                app += lines[x]+"\n"
                 x+=1
             if(len(lines)>4):
                 f = open('inventory'+datetime.today().strftime('%Y-%m-%d-%H-%M-%S')+'.txt', "w+")
